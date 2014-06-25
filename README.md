@@ -27,6 +27,7 @@ Usage
 
 ## BGP example
 
+```ruby
 include_recipe "quagga"
 
 node.set[:quagga][:daemons][:bgpd] = true
@@ -44,10 +45,11 @@ quagga_bgp "65024" do
   networks node.quagga.bgp.networks
   loopback node.quagga.loopback
 end
-
+```
 
 ## OSPF example
 
+```ruby
 include_recipe "quagga"
 
 node.set[:quagga][:ospf][:area] = "0.0.0.0"
@@ -60,4 +62,4 @@ quagga_ospf "#{node.quagga.ospf.area}" do
   loopback node.quagga.loopback
   networks node.quagga.networks
 end
-
+```
