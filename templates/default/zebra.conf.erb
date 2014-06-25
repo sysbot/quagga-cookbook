@@ -13,7 +13,7 @@ interface <%= port %>
 !
 <% end -%>
 !
-<% static_routes.each do |network,nexthop|-%>
+<% @static_routes.each do |network,nexthop|-%>
 ip route <%= network %> <%= nexthop %>
 <% end -%>
 !

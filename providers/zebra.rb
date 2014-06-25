@@ -1,7 +1,7 @@
 #
 # Author:: Bao Nguyen <ngqbao@gmail.com>
 # Cookbook Name:: quagga
-# Provider:: interface
+# Provider:: zebra
 #
 # Copyright 2014, Bao Nguyen
 #
@@ -34,7 +34,6 @@ action :add do
     )
     notifies :restart, "service[quagga]", :delayed
   end
-
 end
 
 action :remove do
