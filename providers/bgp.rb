@@ -1,9 +1,9 @@
-#
+i#
 # Author:: Bao Nguyen <ngqbao@gmail.com>
 # Cookbook Name:: quagga
 # Provider:: bgp
 #
-# Copyright 2014, Bao Nguyen
+# Copyright 2014, Ooyala
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ action :add do
       :networks => new_resource.networks,
       :loopback => new_resource.loopback
     )
-    notifies :restart, "service[quagga]", :delayed
+    notifies :reload, "service[quagga]", :delayed
   end
 
   # configure loopback

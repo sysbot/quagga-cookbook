@@ -3,7 +3,7 @@
 # Cookbook Name:: quagga
 # Provider:: zebra
 #
-# Copyright 2014, Bao Nguyen
+# Copyright 2014, Ooyala
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,12 +32,12 @@ action :add do
       :interfaces => new_resource.interfaces,
       :static_routes => new_resource.static_routes
     )
-    notifies :restart, "service[quagga]", :delayed
+    notifies :reload, "service[quagga]", :delayed
   end
 end
 
 action :remove do
-  zebra_path = "#{node.quagga.dir}/#{new_resource.name}"
+  zebra_path = "#{node.quagga.dir}/zebra.conf"
   if ::File.exists?(zebra_path)
     Chef::Log.info "Removing #{new_resource.file_type.to_s}: interface from #{zebra_path}"
     file zebra_path do

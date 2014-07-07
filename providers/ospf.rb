@@ -3,7 +3,7 @@
 # Cookbook Name:: quagga
 # Provider:: ospf
 #
-# Copyright 2014, Bao Nguyen
+# Copyright 2014, Ooyala
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ action :add do
       :interfaces => new_resource.interfaces,
       :ospf_options => new_resource.ospf_options
     )
-    notifies :restart, "service[quagga]", :delayed
+    notifies :reload, "service[quagga]", :delayed
   end
 
   # configure loopback
@@ -46,7 +46,7 @@ action :add do
 end
 
 action :remove do
-  ospfd_path = "#{node.quagga.dir}/#{new_resource.name}"
+  ospfd_path = "#{node.quagga.dir}/ospfd.conf"
   if ::File.exists?(ospfd_path)
     Chef::Log.info "Removing #{new_resource.file_type.to_s}: ospf from #{ospfd_path}"
     file ospfd_path do
