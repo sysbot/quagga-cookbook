@@ -1,4 +1,4 @@
-i#
+#
 # Author:: Bao Nguyen <ngqbao@gmail.com>
 # Cookbook Name:: quagga
 # Provider:: bgp
